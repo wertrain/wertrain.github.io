@@ -172,7 +172,7 @@ var webgldice = {};
         var ground = this._makeGround(new Ammo.btVector3(30, 1, 30), new Ammo.btVector3(0, -1, 0));
         this.dynamicsWorld.addRigidBody(ground);
         // オブジェクトを追加
-        this.ammoBox = this._makeBox(new Ammo.btVector3(1, 1, 1), 4, new Ammo.btVector3(0, 30, 0));
+        this.ammoBox = this._makeBox(new Ammo.btVector3(1, 1, 1), 4, new Ammo.btVector3(0, 15, 0));
         this.dynamicsWorld.addRigidBody(this.ammoBox);
     };
     SimpleAmmo.prototype.getBox = function() {
