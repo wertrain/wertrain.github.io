@@ -247,7 +247,7 @@ var main = function() {
     sam.initalize();
     var sgl = new webgldice.SimpleGL();
     sgl.initalize('canvas', 640, 480);
-    sgl.loadFiles(['/shaders/vertex.vs', '/shaders/fragment.fs', '/textures/dice.png'], function(responses) {
+    sgl.loadFiles(['shaders/vertex.vs', 'shaders/fragment.fs', 'textures/dice.png'], function(responses) {
         var gl = sgl.getGL();
         var vs = sgl.compileShader(0, responses[0]);
         var fs = sgl.compileShader(1, responses[1]);
