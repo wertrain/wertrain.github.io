@@ -20,7 +20,7 @@
         this.charaArray = [];
     };
     /** 
-     * 初期化
+     * キャラクター管理を初期化する
      * @param {dungeon3d.Map} map マップオブジェクト
      */
     CharaManager.prototype.initalize = function(map) {
@@ -110,7 +110,7 @@
         this.attStrideArray = [];
     };
     /** 
-     * 初期化
+     * キャラクター描画を初期化する
      * @param {dungeon3d.CharaManager} charaManager キャラクター管理
      * @param {SimpleGL} sgl WebGL ユーティリティ
      * @param {Array.<*>} resouces リソースデータ配列（getNeedResoucesで要求したデータ）
@@ -172,7 +172,7 @@
         this.attStrideArray['normal'] = 3;
     };
     /** 
-     * 描画
+     * 全キャラクターを描画する
      * @param {dungeon3d.CharaManager} charaManager キャラクター管理
      * @param {webgl} gl webgl オブジェクト
      * @param {dungeon3d.Camera} camera カメラオブジェクト

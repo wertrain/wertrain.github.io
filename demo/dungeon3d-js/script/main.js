@@ -48,10 +48,15 @@
 
         camera.update();
         let currentTime = 0;
+        let charaMove = false;
         setInterval(() => {
             // update
             currentTime = Date.now();
             charaManager.update(currentTime);
+            if (charaMove) {
+                let cursorPos = cursor.getPos();
+                charaManager.moveTo(0, cursorPos.x, cursorPos.y, currentTime);
+            }
             // render
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
             camera.setViewParams(cameraRotX, -cameraRotY, -cameraZoom, charaManager.getChara(0).position);
@@ -77,7 +82,6 @@
             }
         });
         let cameraDrag = false;
-        let charaMove = false;
         let dragStartX = 0, dragStartY = 0;
         $('canvas').on('mousedown', event => {
             switch (event.which) {
@@ -130,9 +134,6 @@
                 let hit = map.intersectFloor(vecNear, rayDir);
                 if (hit) {
                     cursor.put(hit.x, hit.y);
-                    if (charaMove) {
-                        charaManager.moveTo(0, hit.x, hit.y, currentTime);
-                    }
                 } else {
                     cursor.hide();
                 }

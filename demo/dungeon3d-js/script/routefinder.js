@@ -14,7 +14,7 @@
         this.footprint = null;
     };
     /** 
-     * 初期化
+     * 初期化する
      * @param {object} start 探索開始位置 {x, y} 
      * @param {number} maxdepth 最大深度
      */
@@ -365,7 +365,7 @@
     };
     /** 
      * 外部移動判定関数を設定する
-     * @param {function(number, number)} func ルート探索用の足跡クラス 
+     * @param {function(number, number)} func 移動判定関数 
      */
     RouteFinder.prototype.setIsMoveFunction = function(func) {
         this.isMoveFunction = func;
@@ -377,7 +377,7 @@
      * @return {boolean} 移動できるなら true
      */
     RouteFinder.prototype._isMove = function(footprint, count, pos) {
-        if (!this.isMoveFunction(pos.x, pos.y)) {
+        if (this.isMoveFunction && !this.isMoveFunction(pos.x, pos.y)) {
             return false;
         }
         return footprint.isMove(pos, count);

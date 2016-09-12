@@ -3,13 +3,22 @@
 {
     /** @const */
     const outer = typeof (dungeon3d) === 'undefined' ? exports : dungeon3d;
-    /** カーソル */
+    /** 
+     * カーソルクラス
+     * @constructor 
+     */
     let Cursor = function() {
         this.x = 0; // 2D マップ上のX位置
         this.y = 0; // 2D マップ上のY位置
         this.position = []; // 3D 上の位置
         this.visible = false;
     };
+    /** 
+     * カーソルを設置する
+     * @param {x} x 設置位置X
+     * @param {y} y 設置位置Y
+     * @return {boolean} 現在は常に true
+     */
     Cursor.prototype.put = function(x, y) {
         this.x = x;
         this.y = y;
@@ -17,19 +26,33 @@
         this.visible = true;
         return true;
     };
+    /** 
+     * カーソルを非表示にする
+     */
     Cursor.prototype.hide = function() {
         this.visible = false;
     };
+    /** 
+     * カーソルを位置を取得する
+     * @return {object} カーソル位置 {x, y}
+     */
     Cursor.prototype.getPos = function() {
         return {
             x: this.x,
             y: this.y
         };
     };
+    /** 
+     * カーソルの表示状態を取得する
+     * @return {boolean} カーソルが表示されていれば true
+     */
     Cursor.prototype.isVisible = function() {
         return this.visible;
     };
-    /** カーソル描画 */
+    /** 
+     * カーソル描画クラス
+     * @constructor 
+     */
     let CursorRenderer = function() {
         this.cursor = null;
         this.program = null;
@@ -39,6 +62,12 @@
         this.attLocationArray = [];
         this.attStrideArray = [];
     };
+    /** 
+     * カーソル描画を初期化する
+     * @param {Cursor} cursor カーソル
+     * @param {SimpleGL} sgl WebGL ユーティリティ
+     * @param {Array.<*>} resouces リソースデータ配列（getNeedResoucesで要求したデータ）
+     */
     CursorRenderer.prototype.initalize = function(cursor, sgl, resouces) {
         let gl = sgl.getGL();
         let vs = sgl.compileShader(0, resouces[0]);
@@ -68,6 +97,12 @@
         this.attStrideArray['textureCoord'] = 2;
         this.attStrideArray['normal'] = 3;
     };
+    /** 
+     * カーソルを描画する
+     * @param {webgl} gl webgl オブジェクト
+     * @param {Array.<number>|Matrix44} view ビュー行列
+     * @param {Array.<number>|Matrix44} projection プロジェクション行列
+     */
     CursorRenderer.prototype.render = function(gl, view, projection) {
         if (!this.cursor.visible) {
             return;
@@ -99,6 +134,10 @@
 
         gl.disable(gl.BLEND);
     };
+    /** 
+     * 描画に必要なリソース配列を取得する
+     * @return {Array.<string>} リソースまでのパスの配列
+     */
     CursorRenderer.getNeedResouces = function() {
         return ['shader/vertex.vs', 'shader/fragment.fs', 'image/cursor.png'];
     };
