@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="utf-8">
+      <title>Dungeon3D</title>
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="">
+      <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <link rel="shortcut icon" href="">
+      <!--
+      <style>
+        #canvas {
+          position:absolute;
+          z-index: 1;
+          left: 0px;
+          top: 0px;
+        }
+        #canvas2d {
+          position:absolute;
+          z-index: 2;
+          left: 0px;
+          top: 0px;
+        }
+      </style>
+      -->
+    </head>
+  <body>
+  
+    <!-- Place your content here -->
+    <canvas id="canvas"></canvas>
+    <!--<canvas id="canvas2d" width="640" height="480"></canvas> -->
+    <ul>
+      <li>左クリック ... カーソル位置に移動</li>
+      <li>右クリック + マウスドラッグ ... カメラの移動</li>
+      <li>マウスホイール ... 拡大縮小</li>
+    </ul>
+  
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script>var dungeon3d = {}</script>
+    <script src="script/math.js"></script>
+    <script src="script/sgl.js"></script>
+    <script src="script/camera.js"></script>
+    <script src="script/map.js"></script>
+    <script src="script/routefinder.js"></script>
+    <script src="script/character.js"></script>
+    <script src="script/cursor.js"></script>
+    <script src="script/main.js"></script>
+  </body>
+</html>
